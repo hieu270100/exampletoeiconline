@@ -1,0 +1,91 @@
+package vn.myclass.core.persistence.entity;
+
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.List;
+
+
+@Entity
+@Table(name = "listenguideline")
+public class ListenGuidelineEntity {
+    @Id  //khóa chính
+    @GeneratedValue(strategy = GenerationType.IDENTITY)         //tự động tăng
+    private Integer listenGuidelineId;
+
+    @Column(name ="title")
+    private String title;
+
+    @Column(name ="image")
+    private String image;
+
+    @Column(name ="content")
+    private String content;
+
+    @Column(name ="createddate")
+    private Timestamp createdDate;
+    @Column(name ="modifieddate")
+    private Timestamp modifiedDate;
+
+    @OneToMany(mappedBy = "listenGuidelineEntity",fetch = FetchType.LAZY)
+    private List<CommentEntity> commentEntityList;
+
+
+
+
+    public Integer getListenGuidelineId() {
+        return listenGuidelineId;
+    }
+
+    public void setListenGuidelineId(Integer listenGuidelineId) {
+        this.listenGuidelineId = listenGuidelineId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getImgage() {
+        return image;
+    }
+
+    public void setImgage(String imgage) {
+        this.image = imgage;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Timestamp getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Timestamp modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public List<CommentEntity> getCommentEntityList() {
+        return commentEntityList;
+    }
+
+    public void setCommentEntityList(List<CommentEntity> commentEntityList) {
+        this.commentEntityList = commentEntityList;
+    }
+}
